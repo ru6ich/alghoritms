@@ -11,37 +11,37 @@ func Constructor() RandomizedSet {
 	return RandomizedSet{rndMap: make(map[int]int), rndSlice: []int{}}
 }
 
-func (this *RandomizedSet) Insert(val int) bool {
-	if _, exists := this.rndMap[val]; exists {
+func (set *RandomizedSet) Insert(val int) bool {
+	if _, exists := set.rndMap[val]; exists {
 		return false
 	}
-	this.rndMap[val] = len(this.rndSlice)
-	this.rndSlice = append(this.rndSlice, val)
+	set.rndMap[val] = len(set.rndSlice)
+	set.rndSlice = append(set.rndSlice, val)
 	return true
 }
 
-func (this *RandomizedSet) Remove(val int) bool {
-	index, exists := this.rndMap[val]
+func (set *RandomizedSet) Remove(val int) bool {
+	index, exists := set.rndMap[val]
 	if !exists {
 		return false
 	}
 
 	//Перемещаем последний элемент на место удалямого
-	lastElement := this.rndSlice[len(this.rndSlice)-1]
-	this.rndSlice[index] = lastElement
-	this.rndMap[lastElement] = index
+	lastElement := set.rndSlice[len(set.rndSlice)-1]
+	set.rndSlice[index] = lastElement
+	set.rndMap[lastElement] = index
 
 	//Удаляем последний элемент из слайса
-	this.rndSlice = this.rndSlice[:len(this.rndSlice)-1]
+	set.rndSlice = set.rndSlice[:len(set.rndSlice)-1]
 
 	//Удаляем значение из мапы
-	delete(this.rndMap, val)
+	delete(set.rndMap, val)
 
 	return true
 }
 
-func (this *RandomizedSet) GetRandom() int {
-	return this.rndSlice[rand.Intn(len(this.rndSlice))]
+func (set *RandomizedSet) GetRandom() int {
+	return set.rndSlice[rand.Intn(len(set.rndSlice))]
 }
 
 /**
