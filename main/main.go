@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	arr := [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9}
-	fmt.Println(search.BinarySearch(arr, 6))
+	arr := []int{1, 3, 4, 5, 7, 8, 9}
+	fmt.Println(search.BinarySearch(arr, 1))
 }
