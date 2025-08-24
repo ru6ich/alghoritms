@@ -1,11 +1,30 @@
 package main
 
 import (
-	search "algorithms/algorithms/search"
+	linkedlist "algorithms/dataStructures/LinkedList"
 	"fmt"
 )
 
 func main() {
-	arr := []int{1, 3, 4, 5, 7, 8, 9}
-	fmt.Println(search.BinarySearch(arr, 1))
+	var list *linkedlist.ListNode
+	for i := 1; i < 30; i++ {
+		list = list.Append(i)
+	}
+	fmt.Println("Список после добавления элементов")
+	list.Print()
+	fmt.Println()
+	list = list.Delete(5)
+	fmt.Println("После удаления:")
+	list.Print()
+	fmt.Println()
+	list = list.Prepend(100)
+	list.Print()
+	fmt.Println()
+	node := list.Search(15)
+	if node != nil {
+		fmt.Println("Найдено: ", node.Val)
+	} else {
+		fmt.Println("Не найдено")
+	}
+
 }
